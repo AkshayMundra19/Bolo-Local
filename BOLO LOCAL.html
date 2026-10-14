@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f7f4">
+  <title>BoloLocal — Speak Like You Belong</title>
+  <link rel="stylesheet" href="BOLO LOCAL.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="BoloLocal home">
+      <span class="brand-mark">बो</span>
+      <span>Bolo<span class="brand-light">Local</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="status-dot"></span>
+      <span class="status-text">Offline-friendly learning</span>
+      <div class="avatar">BL</div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR LOCAL LANGUAGE COMPANION</p>
+        <h1>Speak naturally.<br><span>Connect meaningfully.</span></h1>
+        <p class="welcome-copy">
+          Learn the words, tone and local customs that make everyday
+          conversations feel effortless.
+        </p>
+      </div>
+      <div class="welcome-art" aria-hidden="true">
+        <div class="art-circle">अ</div>
+        <span class="bubble bubble-one">नमस्ते!</span>
+        <span class="bubble bubble-two">Hello!</span>
+        <span class="bubble bubble-three">खम्मा घणी</span>
+      </div>
+    </section>
+
+    <section class="setup-panel panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LET'S GET STARTED</p>
+          <h2>Your learning space</h2>
+        </div>
+        <span class="step-label">01 / PERSONALISE</span>
+      </div>
+
+      <div class="setup-grid">
+        <label class="field">
+          <span>I'm learning</span>
+          <select id="language">
+            <option value="hi">Hindi</option>
+            <option value="raj">Rajasthani</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>My level</span>
+          <select id="level">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Practice situation</span>
+          <select id="scenario">
+            <option value="travel">Travel & directions</option>
+            <option value="shopping">Shopping & bargaining</option>
+            <option value="college">College life</option>
+            <option value="emergency">Emergency help</option>
+            <option value="social">Meeting people</option>
+          </select>
+        </label>
+      </div>
+
+      <button class="primary-button" id="startBtn" type="button">
+        Start practising <span aria-hidden="true">→</span>
+      </button>
+    </section>
+
+    <section class="workspace">
+      <div class="conversation panel">
+        <div class="section-heading conversation-heading">
+          <div>
+            <p class="eyebrow">REAL-LIFE ROLE PLAY</p>
+            <h2 id="scenarioTitle">Travel & directions</h2>
+          </div>
+          <span class="live-tag"><span></span> PRACTICE MODE</span>
+        </div>
+
+        <div class="scenario-note" id="scenarioNote">
+          You're asking a local person how to reach the railway station.
+        </div>
+
+        <div class="chat-window" id="chatWindow" aria-live="polite">
+          <div class="message-row">
+            <div class="speaker-avatar">BL</div>
+            <div class="message">
+              <span class="speaker-label">LOCAL GUIDE</span>
+              <p>नमस्ते! बताइए, मैं आपकी क्या मदद कर सकता हूँ?</p>
+              <span class="translation">Hello! Tell me, how can I help you?</span>
+              <button class="speak-button" type="button"
+                data-speak="नमस्ते! बताइए, मैं आपकी क्या मदद कर सकता हूँ?"
+                data-lang="hi-IN">▶ Listen to phrase</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="suggestion-area">
+          <span class="small-label">TRY SAYING</span>
+          <div id="suggestions" class="suggestion-list"></div>
+        </div>
+
+        <form id="chatForm" class="chat-form">
+          <input id="messageInput" type="text"
+            placeholder="Type your response here..."
+            autocomplete="off" maxlength="300"
+            aria-label="Your conversation response">
+          <button class="send-button" type="submit" aria-label="Send response">↑</button>
+        </form>
+
+        <div class="voice-row">
+          <button class="secondary-button" id="micBtn" type="button">
+            <span>🎙</span> Speak your answer
+          </button>
+          <span id="voiceStatus" role="status">Voice support depends on your browser.</span>
+        </div>
+      </div>
+
+      <aside class="side-column">
+        <div class="panel progress-panel">
+          <p class="eyebrow">YOUR PROGRESS</p>
+          <div class="progress-number">
+            <span id="scoreValue">0</span><span class="out-of"> / 100</span>
+          </div>
+          <p class="muted">Practice score</p>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="stats-row">
+            <div><strong id="turnCount">0</strong><span>Responses</span></div>
+            <div><strong id="phraseCount">0</strong><span>Phrases learned</span></div>
+          </div>
+        </div>
+
+        <div class="panel culture-panel">
+          <div class="card-icon">✳</div>
+          <p class="eyebrow">CULTURE CORNER</p>
+          <h3 id="cultureTitle">A little respect goes a long way.</h3>
+          <p id="cultureText">
+            In Hindi, “आप” is generally a respectful way to address someone.
+            Use it with strangers, elders and in formal situations.
+          </p>
+          <span class="culture-tag" id="cultureTag">CULTURAL TIP</span>
+        </div>
+
+        <div class="panel phrase-panel">
+          <p class="eyebrow">QUICK PHRASEBOOK</p>
+          <h3>Keep these handy</h3>
+          <div id="phrasebook" class="phrasebook"></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="quiz-panel panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CHECK WHAT YOU KNOW</p>
+          <h2>One-minute language check</h2>
+          <p class="muted">Choose the most appropriate response for the situation.</p>
+        </div>
+        <div class="quiz-icon">?</div>
+      </div>
+      <div id="quizArea">
+        <p class="quiz-question" id="quizQuestion">How would you politely address an unfamiliar adult in Hindi?</p>
+        <div class="quiz-options" id="quizOptions"></div>
+        <p id="quizFeedback" class="quiz-feedback" role="status"></p>
+        <button id="nextQuizBtn" class="secondary-button" type="button">Next question →</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>BoloLocal © 2026</span>
+      <span>Built for real conversations, not word-for-word translation.</span>
+    </footer>
+  </main>
+
+  <script src="BOLO LOCAL.js"></script>
+</body>
+</html>
